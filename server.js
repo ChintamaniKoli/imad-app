@@ -8,7 +8,7 @@ var config = {
   host: 'db.imad.hasura-app.io',
   database: 'chintamanikoli',
   password: process.env.DB_PASSWORD,
-  port: 5432
+  port: '5432'
 };
 
 
