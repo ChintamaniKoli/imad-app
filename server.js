@@ -9,8 +9,8 @@ var config = {
   database: 'chintamanikoli',
   password: process.env.DB_PASSWORD,
   port: 5432
-})
 }
+
 
 var app = express();
 app.use(morgan('combined'));
