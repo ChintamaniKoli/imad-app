@@ -119,7 +119,7 @@ app.get('/articles/:articleName', function (req, res) {
 var articleName = req.params.articleName;
 
 pool.query("Select * FROM article Where title = '" + req.params.articleName + "'", function (req, res){ 
-        if (err) { res.status(500).send(err.toString);
+        if (err) { res.status(500).send(err.toString());
         } else {
             if (result.rows.length === 0) {
                 rest.status(404).send('Record not Found');
