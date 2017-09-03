@@ -113,11 +113,23 @@ app.get ('/test-db', function (req, res) {
     
 })
 
-app.get('/:articleName', function (req, res) {
+app.get('/articles/:articleName', function (req, res) {
 // articleName = article-one
 //articles[articleName] = {} content object for article one
 var articleName = req.params.articleName;
-    res.send(createTemplate(articles[articleName]));
+
+pool.query("Select * FROM articles Where title = '" + req.params.articleName + "'", function (req, res){ 
+        if (err) { res.status(500).send(err.toString);
+        } else {
+            if (result.rows.length === 0) {
+                rest.status(404).send('Record not Found');
+            } else {
+                var articleData = result.rows[0];
+                res.send(createTemplate(articleData));
+            }
+        }
+});
+    
 });
 
 
